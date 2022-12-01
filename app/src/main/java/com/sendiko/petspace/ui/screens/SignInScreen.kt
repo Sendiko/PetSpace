@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.sendiko.petspace.ui.component.CustomTextField
+import com.sendiko.petspace.ui.navigaton.Screens
 import com.sendiko.petspace.ui.theme.cyan
 import com.sendiko.petspace.ui.theme.darkBlue
 
@@ -31,10 +32,10 @@ fun SignInScreen(
         topBar = {
             TopAppBar(
                 backgroundColor = darkBlue,
-                elevation = 0.dp
+                elevation = 0.dp,
+                contentPadding = PaddingValues(horizontal = 16.dp)
             ) {
                 Text(
-                    modifier = Modifier.padding(start = 16.dp),
                     text = "Sign In",
                     style = TextStyle(
                         fontSize = 24.sp,
@@ -67,7 +68,7 @@ fun SignInScreen(
             )
             Button(
                 onClick = {
-                    // TODO: NAVIGATE TO MAIN SCREEN
+                    navController.navigate(Screens.HomeScreen.route)
                 },
                 modifier = Modifier
                     .fillMaxWidth()

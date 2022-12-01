@@ -38,10 +38,10 @@ fun SignUpScreen(
         topBar = {
             TopAppBar(
                 backgroundColor = darkBlue,
-                elevation = 0.dp
+                elevation = 0.dp,
+                contentPadding = PaddingValues(horizontal = 16.dp)
             ) {
                 Text(
-                    modifier = Modifier.padding(start = 16.dp),
                     text = "Sign Up",
                     style = TextStyle(
                         fontSize = 24.sp,
