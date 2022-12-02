@@ -1,7 +1,6 @@
 package com.sendiko.petspace.ui.screens
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -16,6 +15,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.sendiko.petspace.R
+import com.sendiko.petspace.ui.component.LargeOutlinedButton
+import com.sendiko.petspace.ui.component.LargeSolidButton
 import com.sendiko.petspace.ui.navigaton.Screens
 import com.sendiko.petspace.ui.theme.cyan
 import com.sendiko.petspace.ui.theme.darkBlue
@@ -56,42 +57,23 @@ fun WelcomeScreen(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Button(
-                    onClick = {
-                        navController.navigate(Screens.SignUpScreen.route)
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 4.dp)
-                        .height(64.dp),
-                    colors = ButtonDefaults.buttonColors(cyan)
-                ) {
-                    Text(
-                        "Sign Up",
-                        style = TextStyle(
-                            fontSize = 18.sp,
-                            color = Color.White
-                        )
-                    )
-                }
-                OutlinedButton(
-                    onClick = {
-                        navController.navigate(Screens.SignInScreen.route) },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 8.dp)
-                        .height(64.dp),
-                    border = BorderStroke(color = cyan, width = 2.dp),
-                    colors = ButtonDefaults.buttonColors(darkBlue)
-                ) {
-                    Text(
-                        "Sign In",
-                        style = TextStyle(
-                            fontSize = 18.sp,
-                            color = Color.White
-                        )
-                    )
-                }
+                LargeSolidButton(
+                    onClick = { navController.navigate(Screens.SignUpScreen.route) },
+                    horizontalPaddingValues = 16,
+                    verticalPaddingValues = 4,
+                    buttonColors = cyan,
+                    buttonText = "Sign Up",
+                    buttonTextColor = Color.White
+                )
+                LargeOutlinedButton(
+                    onClick = { navController.navigate(Screens.SignInScreen.route) },
+                    horizontalPaddingValues = 16,
+                    verticalPaddingValues = 8,
+                    borderColor = cyan,
+                    buttonColor = darkBlue,
+                    buttonText = "Sign In",
+                    buttonTextColor = Color.White
+                )
             }
         }
     }

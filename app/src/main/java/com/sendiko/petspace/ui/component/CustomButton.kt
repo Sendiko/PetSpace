@@ -25,9 +25,7 @@ fun LargeSolidButton(
     buttonTextColor: Color
 ) {
     Button(
-        onClick = {
-            onClick
-        },
+        onClick = onClick,
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = horizontalPaddingValues.dp, vertical = verticalPaddingValues.dp)
@@ -55,7 +53,7 @@ fun LargeOutlinedButton(
     buttonTextColor: Color
 ) {
     OutlinedButton(
-        onClick = { onClick },
+        onClick = onClick,
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = horizontalPaddingValues.dp, vertical = verticalPaddingValues.dp)
