@@ -64,7 +64,7 @@ fun WelcomeScreen(
                 LargeSolidButton(
                     onClick = {
                         navController.popBackStack()
-                        navController.navigate(Screens.SignInScreen.route)
+                        navController.navigate(Screens.SignUpScreen.route)
                     },
                     horizontalPaddingValues = 16,
                     verticalPaddingValues = 4,
