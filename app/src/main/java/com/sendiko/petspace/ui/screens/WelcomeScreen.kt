@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
@@ -20,6 +21,7 @@ import com.sendiko.petspace.ui.component.LargeSolidButton
 import com.sendiko.petspace.ui.navigaton.Screens
 import com.sendiko.petspace.ui.theme.cyan
 import com.sendiko.petspace.ui.theme.darkBlue
+import com.sendiko.petspace.ui.theme.poppinsFamily
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -48,7 +50,9 @@ fun WelcomeScreen(
                     text = "PetSpace",
                     style = TextStyle(
                         color = Color.White,
-                        fontSize = 24.sp
+                        fontSize = 24.sp,
+                        fontFamily = poppinsFamily,
+                        fontWeight = FontWeight.Bold
                     )
                 )
             }

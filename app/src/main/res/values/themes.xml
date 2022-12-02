@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Theme.PetSpace" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@color/darkBlue</item>
         <item name="android:navigationBarColor">@color/darkBlue</item>
+        <item name="android:windowSplashScreenBackground" tools:ignore="NewApi">@color/darkBlue</item>
     </style>
 </resources>

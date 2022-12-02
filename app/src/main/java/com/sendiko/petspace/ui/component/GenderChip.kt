@@ -8,11 +8,14 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sendiko.petspace.ui.theme.blueAlternative
 import com.sendiko.petspace.ui.theme.cyan
+import com.sendiko.petspace.ui.theme.poppinsFamily
 
 @Composable
 fun GenderChip(
@@ -31,8 +34,12 @@ fun GenderChip(
             modifier = Modifier
                 .padding(vertical = 4.dp, horizontal =  16.dp),
             text = gender,
-            color = cyan,
-            fontSize = 14.sp
+            style = TextStyle(
+                color = cyan,
+                fontSize = 14.sp,
+                fontFamily = poppinsFamily,
+                fontWeight = FontWeight.Light
+            )
         )
     }
 }

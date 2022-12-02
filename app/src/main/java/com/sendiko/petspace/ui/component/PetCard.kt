@@ -17,12 +17,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sendiko.petspace.R
 import com.sendiko.petspace.repository.model.Pet
 import com.sendiko.petspace.ui.theme.blue
+import com.sendiko.petspace.ui.theme.poppinsFamily
 import com.sendiko.petspace.ui.theme.red
 
 @Composable
@@ -66,7 +68,9 @@ fun PetCard(
                         text = pet.name,
                         style = TextStyle(
                             color = Color.White,
-                            fontSize = 24.sp
+                            fontSize = 24.sp,
+                            fontFamily = poppinsFamily,
+                            fontWeight = FontWeight.Medium
                         )
                     )
                     GenderChip(gender = pet.gender)
@@ -83,12 +87,13 @@ fun PetCard(
                     )
                     Text(
                         modifier = Modifier
-                            .padding(start = 4.dp)
                             .fillMaxWidth(),
                         text = pet.address,
                         style = TextStyle(
                             color = Color.White,
-                            fontSize = 12.sp
+                            fontSize = 12.sp,
+                            fontFamily = poppinsFamily,
+                            fontWeight = FontWeight.Light
                         )
                     )
                 }
