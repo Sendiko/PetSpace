@@ -80,7 +80,10 @@ fun SignInScreen(
                 singleLine = true
             )
             LargeSolidButton(
-                onClick = { navController.navigate(Screens.HomeScreen.route) },
+                onClick = {
+                    navController.popBackStack()
+                    navController.navigate(Screens.HomeScreen.route)
+                },
                 horizontalPaddingValues = 0,
                 verticalPaddingValues = 32,
                 buttonColors = cyan,

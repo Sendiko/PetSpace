@@ -62,7 +62,10 @@ fun WelcomeScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 LargeSolidButton(
-                    onClick = { navController.navigate(Screens.SignUpScreen.route) },
+                    onClick = {
+                        navController.popBackStack()
+                        navController.navigate(Screens.SignInScreen.route)
+                    },
                     horizontalPaddingValues = 16,
                     verticalPaddingValues = 4,
                     buttonColors = cyan,
@@ -70,7 +73,10 @@ fun WelcomeScreen(
                     buttonTextColor = Color.White
                 )
                 LargeOutlinedButton(
-                    onClick = { navController.navigate(Screens.SignInScreen.route) },
+                    onClick = {
+                        navController.popBackStack()
+                        navController.navigate(Screens.SignInScreen.route)
+                    },
                     horizontalPaddingValues = 16,
                     verticalPaddingValues = 8,
                     borderColor = cyan,
