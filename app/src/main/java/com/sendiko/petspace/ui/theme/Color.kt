@@ -9,5 +9,7 @@ val Teal200 = Color(0xFF03DAC5)
 
 val darkBlue = Color(0xFF0C1B3A)
 val blue = Color(0xFF162544)
+val blueAlternative = Color(0xFF162C53)
+val red = Color(0xFFD7060B)
 val lightBlue = Color(0xFF0275B3)
 val cyan = Color(0xFF147EFF)
