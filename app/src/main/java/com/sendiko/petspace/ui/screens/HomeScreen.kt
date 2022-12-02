@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.sendiko.petspace.R
 import com.sendiko.petspace.repository.PetRepository
+import com.sendiko.petspace.repository.viewmodel.PetViewModel
 import com.sendiko.petspace.ui.component.PetCard
 import com.sendiko.petspace.ui.theme.darkBlue
 import com.sendiko.petspace.ui.theme.poppinsFamily
@@ -30,6 +31,7 @@ import com.sendiko.petspace.ui.theme.poppinsFamily
 @Composable
 fun HomeScreen(
     navController: NavHostController,
+    viewModel: PetViewModel
 ) {
     val petData = PetRepository().getAllPet()
     Scaffold(
@@ -90,6 +92,8 @@ fun HomeScreen(
             ){ pet ->
                 PetCard(
                     pet = pet,
+                    navController = navController,
+                    viewModel = viewModel
                 )
             }
         }

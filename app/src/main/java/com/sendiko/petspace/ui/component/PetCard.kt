@@ -1,6 +1,7 @@
 package com.sendiko.petspace.ui.component
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -18,11 +19,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.sendiko.petspace.R
+import androidx.navigation.NavHostController
 import com.sendiko.petspace.repository.model.Pet
+import com.sendiko.petspace.repository.viewmodel.PetViewModel
+import com.sendiko.petspace.ui.navigaton.Screens
 import com.sendiko.petspace.ui.theme.blue
 import com.sendiko.petspace.ui.theme.poppinsFamily
 import com.sendiko.petspace.ui.theme.red
@@ -30,8 +32,14 @@ import com.sendiko.petspace.ui.theme.red
 @Composable
 fun PetCard(
     pet: Pet,
+    navController: NavHostController,
+    viewModel: PetViewModel
 ) {
     Card(
+        modifier = Modifier.clickable {
+            navController.navigate(Screens.PetDetailScreen.route)
+            viewModel.savePet(pet)
+        },
         shape = MaterialTheme.shapes.small,
         elevation = 8.dp,
         backgroundColor = blue
@@ -100,18 +108,4 @@ fun PetCard(
             }
         }
     }
-}
-
-@Preview
-@Composable
-fun PetCardPrev() {
-    PetCard(pet = Pet(
-            "Hank",
-            "Male",
-        "Purwokerto, Banyumas",
-            1,
-            "Park Chaeyoung",
-            R.drawable.hank
-        ),
-    )
 }
