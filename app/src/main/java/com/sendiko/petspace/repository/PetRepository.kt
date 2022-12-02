@@ -17,7 +17,7 @@ class PetRepository {
             Pet(
                 "Kuma",
                 "Male",
-                "Purwokerto, Banyumas",
+                "Temon, Kulo Progo",
                 3,
                 "Kim Jennie",
                 R.drawable.kuma
@@ -25,7 +25,7 @@ class PetRepository {
             Pet(
                 "Kai",
                 "Male",
-                "Purwokerto, Banyumas",
+                "Kawunganten, Cilacap",
                 4,
                 "Kim Jennie",
                 R.drawable.kai
@@ -33,7 +33,38 @@ class PetRepository {
             Pet(
                 "Dalgom",
                 "Male",
+                "Baturraden, Banyumas",
+                4,
+                "Kim Jisoo",
+                R.drawable.dalgom
+            ),Pet(
+                "Hank",
+                "Male",
                 "Purwokerto, Banyumas",
+                1,
+                "Park Chaeyoung",
+                R.drawable.hank
+            ),
+            Pet(
+                "Kuma",
+                "Male",
+                "Temon, Kulo Progo",
+                3,
+                "Kim Jennie",
+                R.drawable.kuma
+            ),
+            Pet(
+                "Kai",
+                "Male",
+                "Kawunganten, Cilacap",
+                4,
+                "Kim Jennie",
+                R.drawable.kai
+            ),
+            Pet(
+                "Dalgom",
+                "Male",
+                "Baturraden, Banyumas",
                 4,
                 "Kim Jisoo",
                 R.drawable.dalgom
