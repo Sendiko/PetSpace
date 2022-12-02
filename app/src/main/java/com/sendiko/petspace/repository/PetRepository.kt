@@ -10,64 +10,89 @@ class PetRepository {
                 "Hank",
                 "Male",
                 "Purwokerto, Banyumas",
-                1,
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+                1.0,
                 "Park Chaeyoung",
-                R.drawable.hank
+                R.drawable.hank,
+                4.5,
+                "Mix"
             ),
             Pet(
                 "Kuma",
                 "Male",
                 "Temon, Kulo Progo",
-                3,
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+                3.0,
                 "Kim Jennie",
-                R.drawable.kuma
+                R.drawable.kuma,
+                4.5,
+                "Brown"
             ),
             Pet(
                 "Kai",
                 "Male",
                 "Kawunganten, Cilacap",
-                4,
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+                4.0,
                 "Kim Jennie",
-                R.drawable.kai
+                R.drawable.kai,
+                4.5,
+                "White"
             ),
             Pet(
                 "Dalgom",
                 "Male",
                 "Baturraden, Banyumas",
-                4,
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+                4.0,
                 "Kim Jisoo",
-                R.drawable.dalgom
-            ),Pet(
+                R.drawable.dalgom,
+                4.5,
+                "White"
+            ),
+            Pet(
                 "Hank",
                 "Male",
                 "Purwokerto, Banyumas",
-                1,
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+                1.0,
                 "Park Chaeyoung",
-                R.drawable.hank
+                R.drawable.hank,
+                4.5,
+                "Mix"
             ),
             Pet(
                 "Kuma",
                 "Male",
                 "Temon, Kulo Progo",
-                3,
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+                3.0,
                 "Kim Jennie",
-                R.drawable.kuma
+                R.drawable.kuma,
+                4.5,
+                "Brown"
             ),
             Pet(
                 "Kai",
                 "Male",
                 "Kawunganten, Cilacap",
-                4,
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+                4.0,
                 "Kim Jennie",
-                R.drawable.kai
+                R.drawable.kai,
+                4.5,
+                "White"
             ),
             Pet(
                 "Dalgom",
                 "Male",
                 "Baturraden, Banyumas",
-                4,
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+                4.0,
                 "Kim Jisoo",
-                R.drawable.dalgom
+                R.drawable.dalgom,
+                4.5,
+                "White"
             ),
         )
     }
