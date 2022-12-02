@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
@@ -24,6 +25,7 @@ import com.sendiko.petspace.R
 import com.sendiko.petspace.repository.PetRepository
 import com.sendiko.petspace.ui.component.PetCard
 import com.sendiko.petspace.ui.theme.darkBlue
+import com.sendiko.petspace.ui.theme.poppinsFamily
 
 @Composable
 fun HomeScreen(
@@ -50,14 +52,18 @@ fun HomeScreen(
                             text = "Hi, Sendiko!",
                             style = TextStyle(
                                 color = Color.White,
-                                fontSize = 24.sp
+                                fontSize = 20.sp,
+                                fontFamily = poppinsFamily,
+                                fontWeight = FontWeight.SemiBold,
                             )
                         )
                         Text(
-                            text = "Looking for soulmate?",
+                            text = "Adopt a new friend near you!",
                             style = TextStyle(
                                 color = Color.White,
-                                fontSize = 18.sp
+                                fontSize = 14.sp,
+                                fontFamily = poppinsFamily,
+                                fontWeight = FontWeight.Normal,
                             )
                         )
                     }
