@@ -4,14 +4,13 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.sendiko.petspace.ui.screens.HomeScreen
-import com.sendiko.petspace.ui.screens.SignInScreen
-import com.sendiko.petspace.ui.screens.SignUpScreen
-import com.sendiko.petspace.ui.screens.WelcomeScreen
+import com.sendiko.petspace.repository.viewmodel.PetViewModel
+import com.sendiko.petspace.ui.screens.*
 
 @Composable
 fun SetupNavGraph(
     navController: NavHostController,
+    viewModel: PetViewModel
 ) {
     NavHost(
         navController = navController,
@@ -42,7 +41,16 @@ fun SetupNavGraph(
             route = Screens.HomeScreen.route
         ){
             HomeScreen(
-                navController = navController
+                navController = navController,
+                viewModel = viewModel,
+            )
+        }
+        composable(
+            route = Screens.PetDetailScreen.route
+        ){
+            PetDetailScreen(
+                navController = navController,
+                viewModel = viewModel
             )
         }
     }
