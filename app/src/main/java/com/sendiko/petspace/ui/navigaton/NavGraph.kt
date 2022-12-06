@@ -53,5 +53,12 @@ fun SetupNavGraph(
                 viewModel = viewModel
             )
         }
+        composable(
+            route = Screens.ProfileScreen.route
+        ){
+            ProfileScreen(
+                navController = navController
+            )
+        }
     }
 }
