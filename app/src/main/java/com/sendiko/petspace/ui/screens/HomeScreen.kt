@@ -19,6 +19,7 @@ import com.sendiko.petspace.repository.PetRepository
 import com.sendiko.petspace.repository.viewmodel.PetViewModel
 import com.sendiko.petspace.ui.component.PetCard
 import com.sendiko.petspace.ui.component.TopAppBarWithSubtitle
+import com.sendiko.petspace.ui.navigaton.Screens
 import com.sendiko.petspace.ui.theme.darkBlue
 
 @Composable
@@ -38,12 +39,12 @@ fun HomeScreen(
                 modifier = Modifier
                     .size(48.dp)
                     .clip(RoundedCornerShape(8.dp))
-                    .clickable { }
+                    .clickable { navController.navigate(Screens.ProfileScreen.route) }
             )
         }
     ) {
         LazyColumn(
-            Modifier.padding(16.dp),
+            Modifier.padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ){
             items(
