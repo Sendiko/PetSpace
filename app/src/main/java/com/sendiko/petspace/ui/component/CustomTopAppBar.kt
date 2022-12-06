@@ -16,6 +16,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.sendiko.petspace.repository.model.Owner
 import com.sendiko.petspace.ui.theme.poppinsFamily
 
 @Composable
@@ -118,6 +119,51 @@ fun TopAppBarWithSubtitle(
                 painter = image,
                 contentDescription = "Image Header",
                 modifier = modifier,
+            )
+        }
+    }
+}
+
+@Composable
+fun ProfileHeader(
+    backgroundColor: Color,
+    image: Painter,
+    modifier: Modifier,
+    owner: Owner
+) {
+    TopAppBar(
+        contentPadding = PaddingValues(16.dp),
+        backgroundColor = backgroundColor,
+        elevation = 0.dp
+    ) {
+        Image(
+            alignment = Alignment.Center,
+            contentScale = ContentScale.Fit,
+            painter = image,
+            contentDescription = "Image Header",
+            modifier = modifier.size(72.dp),
+        )
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.Start
+        ) {
+            Text(
+                text = owner.name,
+                style = TextStyle(
+                    color = Color.White,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = poppinsFamily
+                )
+            )
+            Text(
+                text = owner.address,
+                style = TextStyle(
+                    color = Color.White,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Normal,
+                    fontFamily = poppinsFamily
+                )
             )
         }
     }
