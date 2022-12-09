@@ -1,5 +1,6 @@
 package com.sendiko.petspace.ui.screens
 
+import android.content.Intent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.padding
@@ -11,6 +12,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -19,7 +21,7 @@ import com.sendiko.petspace.repository.PetRepository
 import com.sendiko.petspace.repository.viewmodel.PetViewModel
 import com.sendiko.petspace.ui.component.PetCard
 import com.sendiko.petspace.ui.component.TopAppBarWithSubtitle
-import com.sendiko.petspace.ui.navigaton.Screens
+import com.sendiko.petspace.ui.container.SecondaryActivity
 import com.sendiko.petspace.ui.theme.darkBlue
 
 @Composable
@@ -28,6 +30,7 @@ fun HomeScreen(
     viewModel: PetViewModel
 ) {
     val petData = PetRepository().getAllPet()
+    val context = LocalContext.current
     Scaffold(
         backgroundColor = darkBlue,
         topBar = {
@@ -39,7 +42,9 @@ fun HomeScreen(
                 modifier = Modifier
                     .size(48.dp)
                     .clip(RoundedCornerShape(8.dp))
-                    .clickable { navController.navigate(Screens.ProfileScreen.route) }
+                    .clickable {
+                    context.startActivity(Intent(context, SecondaryActivity::class.java))
+                }
             )
         }
     ) {
