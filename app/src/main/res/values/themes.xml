@@ -6,4 +6,12 @@
         <item name="android:navigationBarColor">@color/darkBlue</item>
         <item name="android:windowSplashScreenBackground" tools:ignore="NewApi">@color/darkBlue</item>
     </style>
+    <style name="Theme.MainActivityTheme" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/darkBlue</item>
+        <item name="android:navigationBarColor">@color/darkBlue</item>
+    </style>
+    <style name="Theme.SecondaryActivityTheme" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/lightBlueAlternative</item>
+        <item name="android:navigationBarColor">@color/lightBlueAlternative</item>
+    </style>
 </resources>

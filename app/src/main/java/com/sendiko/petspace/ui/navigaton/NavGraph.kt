@@ -55,3 +55,19 @@ fun SetupNavGraph(
         }
     }
 }
+
+@Composable
+fun SecondNavGraph(
+    navController: NavHostController,
+) {
+    NavHost(
+        navController = navController,
+        startDestination = Screens.ProfileScreen.route
+    ){
+        composable(
+            Screens.ProfileScreen.route,
+        ){
+            ProfileScreen()
+        }
+    }
+}

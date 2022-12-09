@@ -13,10 +13,19 @@
         android:theme="@style/Theme.PetSpace"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.container.SecondaryActivity"
+            android:exported="false"
+            android:label="@string/title_activity_secondary"
+            android:theme="@style/Theme.SecondaryActivityTheme">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.container.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.PetSpace">
+            android:theme="@style/Theme.MainActivityTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
