@@ -1,5 +1,6 @@
 package com.sendiko.petspace.ui.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -9,17 +10,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.sendiko.petspace.R
 import com.sendiko.petspace.repository.OwnerRepo
 import com.sendiko.petspace.ui.component.ProfileHeader
+import com.sendiko.petspace.ui.navigaton.Screens
 import com.sendiko.petspace.ui.theme.lightBlueAlternative
 import com.sendiko.petspace.ui.theme.textStyle
 
 @Composable
 fun ProfileScreen(
-//    navController: NavHostController
+    navController: NavHostController
 ) {
     val ownerData = OwnerRepo().getOwnerInfo()
     Scaffold(
@@ -68,7 +70,10 @@ fun ProfileScreen(
                         size = 20,
                         color = Color.White,
                         weight = FontWeight.Medium
-                    )
+                    ),
+                    modifier = Modifier.clickable {
+                        navController.navigate(Screens.ChatListScreen.route)
+                    }
                 )
                 Text(
                     text = "Notifications",
@@ -111,10 +116,4 @@ fun ProfileScreen(
             }
         }
     }
-}
-
-@Preview
-@Composable
-fun ProfileScreenPreview() {
-    ProfileScreen()
 }
