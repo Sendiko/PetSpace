@@ -1,4 +1,4 @@
-package com.sendiko.petspace
+package com.sendiko.petspace.ui.container
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
