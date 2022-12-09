@@ -33,17 +33,17 @@ fun ProfileScreen(
             )
         }
     ) {
-        Row(
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.CenterVertically,
+        Column(
+            verticalArrangement = Arrangement.SpaceBetween,
+            horizontalAlignment = Alignment.Start,
             modifier = Modifier.fillMaxSize()
-        ){
+        ) {
             Column(
                 Modifier
-                    .padding(horizontal = 16.dp)
+                    .padding(16.dp)
                     .fillMaxHeight()
                     .weight(1f),
-                verticalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterVertically),
+                verticalArrangement = Arrangement.spacedBy(8.dp, Alignment.Top),
                 horizontalAlignment = Alignment.Start
             ) {
                 Text(
@@ -74,6 +74,36 @@ fun ProfileScreen(
                     text = "Notifications",
                     style = textStyle(
                         size = 20,
+                        color = Color.White,
+                        weight = FontWeight.Medium
+                    )
+                )
+            }
+            Row(
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(horizontal = 16.dp)
+            ){
+                Text(
+                    text = "Settings",
+                    style = textStyle(
+                        size = 18,
+                        color = Color.White,
+                        weight = FontWeight.Medium
+                    )
+                )
+                Text(
+                    text = " | ",
+                    style = textStyle(
+                        size = 18,
+                        color = Color.White,
+                        weight = FontWeight.Medium
+                    )
+                )
+                Text(
+                    text = "Logout",
+                    style = textStyle(
+                        size = 18,
                         color = Color.White,
                         weight = FontWeight.Medium
                     )
