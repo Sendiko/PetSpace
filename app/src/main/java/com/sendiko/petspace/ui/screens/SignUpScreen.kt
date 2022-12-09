@@ -12,7 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.sendiko.petspace.ui.component.CustomTextField
+import com.sendiko.petspace.ui.component.CustomOutlinedTextField
 import com.sendiko.petspace.ui.component.LargeSolidButton
 import com.sendiko.petspace.ui.component.RegularTopAppBar
 import com.sendiko.petspace.ui.navigaton.Screens
@@ -52,7 +52,7 @@ fun SignUpScreen(
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            CustomTextField(
+            CustomOutlinedTextField(
                 textValue = username,
                 borderColor = cyan,
                 textColor = Color.White,
@@ -62,7 +62,7 @@ fun SignUpScreen(
                 inputPassword = false,
                 singleLine = true
             )
-            CustomTextField(
+            CustomOutlinedTextField(
                 textValue = email,
                 borderColor = cyan,
                 textColor = Color.White,
@@ -72,7 +72,7 @@ fun SignUpScreen(
                 inputPassword = false,
                 singleLine = true
             )
-            CustomTextField(
+            CustomOutlinedTextField(
                 textValue = password,
                 borderColor = cyan,
                 textColor = Color.White,
@@ -82,7 +82,7 @@ fun SignUpScreen(
                 inputPassword = true,
                 singleLine = true
             )
-            CustomTextField(
+            CustomOutlinedTextField(
                 textValue = user,
                 borderColor = cyan,
                 textColor = Color.White,
