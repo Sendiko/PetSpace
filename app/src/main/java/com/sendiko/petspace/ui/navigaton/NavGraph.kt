@@ -67,7 +67,16 @@ fun SecondNavGraph(
         composable(
             Screens.ProfileScreen.route,
         ){
-            ProfileScreen()
+            ProfileScreen(
+                navController = navController
+            )
+        }
+        composable(
+            Screens.ChatListScreen.route
+        ){
+            ChatListScreen(
+                navController = navController
+            )
         }
     }
 }
