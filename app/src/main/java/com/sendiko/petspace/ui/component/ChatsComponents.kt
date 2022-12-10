@@ -48,12 +48,14 @@ fun ChatItem(
             Column(
                 verticalArrangement = Arrangement.SpaceEvenly,
                 horizontalAlignment = Alignment.Start,
-                modifier = Modifier.padding(start = 8.dp)
+                modifier = Modifier
+                    .padding(start = 8.dp)
+                    .wrapContentWidth()
             ) {
                 Text(
                     text = textPerson,
                     style = textStyle(
-                        size = 18,
+                        size = 20,
                         weight = FontWeight.Bold,
                         color = Color.White
                     )
