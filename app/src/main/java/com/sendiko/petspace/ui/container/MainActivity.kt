@@ -7,23 +7,26 @@ import androidx.activity.viewModels
 import androidx.compose.material.Scaffold
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.sendiko.petspace.repository.viewmodel.AuthViewModel
 import com.sendiko.petspace.repository.viewmodel.PetViewModel
 import com.sendiko.petspace.ui.navigaton.SetupNavGraph
 import com.sendiko.petspace.ui.theme.PetSpaceTheme
 import com.sendiko.petspace.ui.theme.darkBlue
 
 class MainActivity : ComponentActivity() {
-    private lateinit var navController : NavHostController
+    private lateinit var navController: NavHostController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             PetSpaceTheme {
                 navController = rememberNavController()
-                val viewModel : PetViewModel by viewModels()
+                val viewModel: PetViewModel by viewModels()
+                val authViewModel: AuthViewModel by viewModels()
                 Scaffold(backgroundColor = darkBlue) {
                     SetupNavGraph(
                         navController = navController,
-                        viewModel = viewModel
+                        viewModel = viewModel,
+                        authViewModel = authViewModel
                     )
                 }
             }
