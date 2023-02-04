@@ -7,8 +7,11 @@ import androidx.lifecycle.ViewModel
 
 class AuthViewModel : ViewModel() {
 
-    private val _valid = MutableLiveData<Boolean>()
-    val valid: LiveData<Boolean> = _valid
+    private val _signInValid = MutableLiveData<Boolean>()
+    val signInValid: LiveData<Boolean> = _signInValid
+
+    private val _signUpValid = MutableLiveData<Boolean>()
+    val signUpValid: LiveData<Boolean> = _signUpValid
 
     fun validateSignIn(
         email: String,
@@ -18,7 +21,7 @@ class AuthViewModel : ViewModel() {
             email.isNotEmpty() && password.isNotEmpty() -> {
                 val pattern = Patterns.EMAIL_ADDRESS
                 when (pattern.matcher(email).matches()) {
-                    true -> _valid.value = true
+                    true -> _signInValid.value = true
                 }
             }
         }
@@ -37,7 +40,7 @@ class AuthViewModel : ViewModel() {
             userOptions.isNotEmpty() -> {
                 val pattern = Patterns.EMAIL_ADDRESS
                 when (pattern.matcher(email).matches()) {
-                    true -> _valid.value = true
+                    true -> _signUpValid.value = true
                 }
             }
         }
