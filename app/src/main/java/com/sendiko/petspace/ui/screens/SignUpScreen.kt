@@ -2,11 +2,11 @@ package com.sendiko.petspace.ui.screens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material.icons.rounded.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -14,8 +14,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
@@ -23,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.sendiko.petspace.repository.UserOptions
 import com.sendiko.petspace.repository.viewmodel.AuthViewModel
+import com.sendiko.petspace.ui.component.CustomTextField
 import com.sendiko.petspace.ui.component.LargeSolidButton
 import com.sendiko.petspace.ui.component.RegularTopAppBar
 import com.sendiko.petspace.ui.navigaton.Screens
@@ -61,227 +60,142 @@ fun SignUpScreen(
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 8.dp),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.Start
-            ) {
-                Text(
-                    text = "Username",
-                    style = TextStyle(
-                        color = Color.White,
-                        fontSize = 20.sp,
-                        fontFamily = poppinsFamily,
-                        fontWeight = FontWeight.Normal,
+            CustomTextField(
+                textValue = username,
+                onNewValue = {
+                    username = it
+                    when {
+                        it.isNotEmpty() -> inputIsNotValid = false
+                    }
+                },
+                borderColor = cyan,
+                labelText = "Username",
+                textColor = Color.White,
+                paddingValue = 8,
+                keyboardType = KeyboardType.Text,
+                inputPassword = false,
+                singleLine = true,
+                isError = inputIsNotValid,
+                placeholder = "Username",
+                trailingIcon = { },
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Rounded.Person,
+                        contentDescription = null
                     )
-                )
-                OutlinedTextField(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 8.dp),
-                    value = username,
-                    onValueChange = {
-                        username = it
-                        when{
+                }
+            )
+            CustomTextField(
+                textValue = email,
+                onNewValue = {
+                    email = it
+                    when {
+                        it.isNotEmpty() -> inputIsNotValid = false
+                    }
+                },
+                borderColor = cyan,
+                labelText = "Email",
+                textColor = Color.White,
+                paddingValue = 8,
+                keyboardType = KeyboardType.Email,
+                inputPassword = false,
+                singleLine = true,
+                isError = inputIsNotValid,
+                placeholder = "Email",
+                trailingIcon = { },
+                leadingIcon = { Icon(imageVector = Icons.Rounded.Email, contentDescription = null) }
+            )
+            CustomTextField(
+                textValue = password,
+                onNewValue = {
+                    password = it
+                    when {
+                        it.isNotEmpty() -> inputIsNotValid = false
+                    }
+                },
+                borderColor = cyan,
+                labelText = "Password",
+                textColor = Color.White,
+                paddingValue = 8,
+                keyboardType = KeyboardType.Password,
+                inputPassword = isVisible,
+                singleLine = true,
+                isError = inputIsNotValid,
+                placeholder = "Password",
+                trailingIcon = {
+                    when (isVisible) {
+                        true -> Icon(
+                            imageVector = Icons.Filled.Visibility,
+                            contentDescription = null,
+                            modifier = Modifier.clickable {
+                                isVisible = !isVisible
+                            }
+                        )
+                        else -> Icon(
+                            imageVector = Icons.Filled.VisibilityOff,
+                            contentDescription = null,
+                            modifier = Modifier.clickable {
+                                isVisible = !isVisible
+                            }
+                        )
+                    }
+                },
+                leadingIcon = { Icon(imageVector = Icons.Rounded.Lock, contentDescription = null) }
+            )
+            ExposedDropdownMenuBox(expanded = expanded, onExpandedChange = {
+                expanded = !expanded
+            }) {
+                CustomTextField(
+                    textValue = user,
+                    onNewValue = {
+                        user = it
+                        when {
                             it.isNotEmpty() -> inputIsNotValid = false
                         }
                     },
-                    colors = TextFieldDefaults.outlinedTextFieldColors(
-                        unfocusedBorderColor = cyan,
-                        focusedBorderColor = cyan
-                    ),
-                    textStyle = TextStyle(
-                        color = Color.White,
-                        fontSize = 18.sp,
-                        fontFamily = poppinsFamily,
-                        fontWeight = FontWeight.Normal,
-                    ),
-                    keyboardOptions = KeyboardOptions(
-                        keyboardType = KeyboardType.Text
-                    ),
+                    borderColor = cyan,
+                    labelText = "Select User/Shelter",
+                    textColor = Color.White,
+                    paddingValue = 7,
+                    keyboardType = KeyboardType.Text,
+                    inputPassword = false,
                     singleLine = true,
-                    placeholder = { Text("Username") },
-                    isError = inputIsNotValid
-                )
-            }
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 8.dp),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.Start
-            ) {
-                Text(
-                    text = "Email",
-                    style = TextStyle(
-                        color = Color.White,
-                        fontSize = 20.sp,
-                        fontFamily = poppinsFamily,
-                        fontWeight = FontWeight.Normal,
-                    )
-                )
-                OutlinedTextField(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 8.dp),
-                    value = email,
-                    onValueChange = {
-                        email = it
-                        when{
-                            it.isNotEmpty() -> inputIsNotValid = false
-                        }
-                    },
-                    colors = TextFieldDefaults.outlinedTextFieldColors(
-                        unfocusedBorderColor = cyan,
-                        focusedBorderColor = cyan
-                    ),
-                    textStyle = TextStyle(
-                        color = Color.White,
-                        fontSize = 18.sp,
-                        fontFamily = poppinsFamily,
-                        fontWeight = FontWeight.Normal,
-                    ),
-                    keyboardOptions = KeyboardOptions(
-                        keyboardType = KeyboardType.Email
-                    ),
-                    singleLine = true,
-                    placeholder = { Text("Email") },
-                    isError = inputIsNotValid
-                )
-            }
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 8.dp),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.Start
-            ) {
-                Text(
-                    text = "Password",
-                    style = TextStyle(
-                        color = Color.White,
-                        fontSize = 20.sp,
-                        fontFamily = poppinsFamily,
-                        fontWeight = FontWeight.Normal,
-                    )
-                )
-                OutlinedTextField(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 8.dp),
-                    value = password,
-                    onValueChange = {
-                        password = it
-                        when{
-                            it.isNotEmpty() -> inputIsNotValid = false
-                        }
-                    },
-                    colors = TextFieldDefaults.outlinedTextFieldColors(
-                        unfocusedBorderColor = cyan,
-                        focusedBorderColor = cyan
-                    ),
-                    textStyle = TextStyle(
-                        color = Color.White,
-                        fontSize = 18.sp,
-                        fontFamily = poppinsFamily,
-                        fontWeight = FontWeight.Normal,
-                    ),
-                    keyboardOptions = KeyboardOptions(
-                        keyboardType = KeyboardType.Email
-                    ),
-                    singleLine = true,
-                    placeholder = { Text("Password") },
-                    visualTransformation = when (isVisible) {
-                        false -> VisualTransformation.None
-                        else -> PasswordVisualTransformation()
-                    },
-                    trailingIcon = {
-                        when (isVisible) {
-                            true -> Icon(
-                                imageVector = Icons.Filled.Visibility,
-                                contentDescription = null,
-                                modifier = Modifier.clickable {
-                                    isVisible = !isVisible
-                                }
+                    isError = inputIsNotValid,
+                    trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+                    leadingIcon = {
+                        when (user) {
+                            UserOptions.User.option -> Icon(
+                                imageVector = Icons.Rounded.Person,
+                                contentDescription = null
+                            )
+                            UserOptions.Shelter.option -> Icon(
+                                imageVector = Icons.Rounded.NightShelter,
+                                contentDescription = null
                             )
                             else -> Icon(
-                                imageVector = Icons.Filled.VisibilityOff,
-                                contentDescription = null,
-                                modifier = Modifier.clickable {
-                                    isVisible = !isVisible
-                                }
+                                imageVector = Icons.Rounded.PersonAdd,
+                                contentDescription = null
                             )
                         }
                     },
-                    isError = inputIsNotValid
+                    placeholder = "User/Shelter"
                 )
-            }
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 8.dp),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.Start
-            ) {
-                Text(
-                    text = "Select User/Shelter",
-                    style = TextStyle(
-                        color = Color.White,
-                        fontSize = 20.sp,
-                        fontFamily = poppinsFamily,
-                        fontWeight = FontWeight.Normal,
-                    )
-                )
-                ExposedDropdownMenuBox(expanded = expanded, onExpandedChange = {
-                    expanded = !expanded
-                }) {
-                    OutlinedTextField(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 8.dp),
-                        value = user,
-                        onValueChange = {
+                ExposedDropdownMenu(
+                    expanded = expanded,
+                    onDismissRequest = { expanded = false }
+                ) {
+                    userOptions.forEach {
+                        DropdownMenuItem(onClick = {
                             user = it
-                            when{
-                                it.isNotEmpty() -> inputIsNotValid = false
-                            }
-                        },
-                        colors = TextFieldDefaults.outlinedTextFieldColors(
-                            unfocusedBorderColor = cyan,
-                            focusedBorderColor = cyan
-                        ),
-                        textStyle = TextStyle(
-                            color = Color.White,
-                            fontSize = 18.sp,
-                            fontFamily = poppinsFamily,
-                            fontWeight = FontWeight.Normal,
-                        ),
-                        singleLine = true,
-                        placeholder = { Text("User/Shelter") },
-                        trailingIcon = {
-                            ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
-                        },
-                        isError = inputIsNotValid
-                    )
-                    ExposedDropdownMenu(
-                        expanded = expanded,
-                        onDismissRequest = { expanded = false }
-                    ) {
-                        userOptions.forEach {
-                            DropdownMenuItem(onClick = {
-                                user = it
-                                expanded = false
-                                inputIsNotValid = false
-                            }) {
-                                Text(it)
-                            }
+                            expanded = false
+                            inputIsNotValid = false
+                        }) {
+                            Text(it)
                         }
                     }
                 }
             }
-            when(inputIsNotValid){
+            when (inputIsNotValid) {
                 true -> "Please check the data"
                 else -> null
             }?.let { it1 ->
@@ -294,7 +208,9 @@ fun SignUpScreen(
                         fontWeight = FontWeight.Normal,
                         textAlign = TextAlign.Start
                     ),
-                    modifier = Modifier.fillMaxWidth().padding(top = 8.dp)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 8.dp)
                 )
             }
             LargeSolidButton(
@@ -305,7 +221,7 @@ fun SignUpScreen(
                         password,
                         user
                     )
-                    when (authViewModel.valid.value) {
+                    when (authViewModel.signUpValid.value) {
                         true -> {
                             navController.popBackStack()
                             navController.navigate(Screens.SignInScreen.route)
