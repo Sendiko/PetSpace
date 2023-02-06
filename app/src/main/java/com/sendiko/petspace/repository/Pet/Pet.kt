@@ -1,4 +1,4 @@
-package com.sendiko.petspace.repository.model
+package com.sendiko.petspace.repository.Pet
 
 data class Pet(
     val name : String,

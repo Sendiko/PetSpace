@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.sendiko.petspace.R
-import com.sendiko.petspace.repository.viewmodel.PetViewModel
+import com.sendiko.petspace.repository.Pet.PetViewModel
 import com.sendiko.petspace.ui.component.*
 import com.sendiko.petspace.ui.navigaton.Screens
 import com.sendiko.petspace.ui.theme.cyan

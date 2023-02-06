@@ -1,7 +1,6 @@
-package com.sendiko.petspace.repository
+package com.sendiko.petspace.repository.Pet
 
 import com.sendiko.petspace.R
-import com.sendiko.petspace.repository.model.Pet
 
 class PetRepository {
     fun getAllPet() : List<Pet> {

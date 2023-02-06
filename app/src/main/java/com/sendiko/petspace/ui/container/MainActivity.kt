@@ -8,7 +8,7 @@ import androidx.compose.material.Scaffold
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.sendiko.petspace.repository.viewmodel.AuthViewModel
-import com.sendiko.petspace.repository.viewmodel.PetViewModel
+import com.sendiko.petspace.repository.Pet.PetViewModel
 import com.sendiko.petspace.ui.navigaton.SetupNavGraph
 import com.sendiko.petspace.ui.theme.PetSpaceTheme
 import com.sendiko.petspace.ui.theme.darkBlue

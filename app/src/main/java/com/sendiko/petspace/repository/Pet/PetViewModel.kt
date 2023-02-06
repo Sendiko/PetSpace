@@ -1,10 +1,10 @@
-package com.sendiko.petspace.repository.viewmodel
+package com.sendiko.petspace.repository.Pet
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sendiko.petspace.repository.model.Pet
+import com.sendiko.petspace.repository.Pet.Pet
 import kotlinx.coroutines.launch
 
 class PetViewModel : ViewModel() {

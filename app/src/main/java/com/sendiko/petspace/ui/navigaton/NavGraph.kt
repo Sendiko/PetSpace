@@ -5,7 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.sendiko.petspace.repository.viewmodel.AuthViewModel
-import com.sendiko.petspace.repository.viewmodel.PetViewModel
+import com.sendiko.petspace.repository.Pet.PetViewModel
 import com.sendiko.petspace.ui.screens.*
 
 @Composable

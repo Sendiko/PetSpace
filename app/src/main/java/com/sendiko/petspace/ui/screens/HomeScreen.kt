@@ -17,8 +17,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.sendiko.petspace.R
-import com.sendiko.petspace.repository.PetRepository
-import com.sendiko.petspace.repository.viewmodel.PetViewModel
+import com.sendiko.petspace.repository.Pet.PetRepository
+import com.sendiko.petspace.repository.Pet.PetViewModel
 import com.sendiko.petspace.ui.component.PetCard
 import com.sendiko.petspace.ui.component.TopAppBarWithSubtitle
 import com.sendiko.petspace.ui.container.SecondaryActivity
