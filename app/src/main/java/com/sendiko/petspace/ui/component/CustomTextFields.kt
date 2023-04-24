@@ -17,8 +17,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.sendiko.petspace.repository.model.InputError
 import com.sendiko.petspace.ui.theme.poppinsFamily
 
 @Composable
@@ -32,7 +34,7 @@ fun CustomTextField(
     keyboardType: KeyboardType,
     inputPassword : Boolean,
     singleLine : Boolean,
-    isError: Boolean,
+    inputError: InputError,
     trailingIcon: @Composable () -> Unit,
     leadingIcon: @Composable () -> Unit,
     placeholder: String,
@@ -80,9 +82,27 @@ fun CustomTextField(
             },
             placeholder = { Text(text = placeholder)},
             singleLine = singleLine,
-            isError = isError,
+            isError = inputError.isError,
             trailingIcon = trailingIcon,
             leadingIcon = leadingIcon
         )
+        when (inputError.isError) {
+            true -> inputError.errorMessage
+            else -> null
+        }?.let { errorMessage ->
+            Text(
+                text = errorMessage,
+                style = TextStyle(
+                    color = Color.Red,
+                    fontSize = 14.sp,
+                    fontFamily = poppinsFamily,
+                    fontWeight = FontWeight.Normal,
+                    textAlign = TextAlign.Start
+                ),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 4.dp)
+            )
+        }
     }
 }

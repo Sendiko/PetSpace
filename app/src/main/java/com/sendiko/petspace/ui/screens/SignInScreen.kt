@@ -1,11 +1,11 @@
 package com.sendiko.petspace.ui.screens
 
-import android.util.Log
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.Icon
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
@@ -18,11 +18,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.sendiko.petspace.repository.model.InputError
+import com.sendiko.petspace.repository.user.UserViewModel
 import com.sendiko.petspace.repository.viewmodel.AuthViewModel
 import com.sendiko.petspace.ui.component.CustomTextField
 import com.sendiko.petspace.ui.component.LargeSolidButton
@@ -31,16 +32,20 @@ import com.sendiko.petspace.ui.navigaton.Screens
 import com.sendiko.petspace.ui.theme.cyan
 import com.sendiko.petspace.ui.theme.darkBlue
 import com.sendiko.petspace.ui.theme.poppinsFamily
+import kotlinx.coroutines.CoroutineScope
 
 @Composable
 fun SignInScreen(
     navController: NavHostController,
-    authViewModel: AuthViewModel
+    authViewModel: AuthViewModel,
+    userViewModel: UserViewModel = UserViewModel()
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var isVisible by remember { mutableStateOf(true) }
-    var inputIsNotValid by remember { mutableStateOf(false) }
+    var inputIsNotValid by remember { mutableStateOf(InputError(false, "")) }
+    val scaffoldState: ScaffoldState = rememberScaffoldState()
+    val coroutineScope: CoroutineScope = rememberCoroutineScope()
 
     Scaffold(
         backgroundColor = darkBlue,
@@ -49,7 +54,8 @@ fun SignInScreen(
                 backgroundColor = darkBlue,
                 title = "Sign In"
             )
-        }
+        },
+        scaffoldState = scaffoldState
     ) {
         Column(
             modifier = Modifier
@@ -60,10 +66,10 @@ fun SignInScreen(
         ) {
             CustomTextField(
                 textValue = email,
-                onNewValue = { newValue ->
-                    email = newValue
+                onNewValue = {
+                    email = it
                     when {
-                        newValue.isNotEmpty() -> inputIsNotValid = false
+                        it.isNotEmpty() -> inputIsNotValid = InputError(false, "")
                     }
                 },
                 borderColor = cyan,
@@ -74,7 +80,7 @@ fun SignInScreen(
                 inputPassword = false,
                 singleLine = true,
                 placeholder = "Email",
-                isError = inputIsNotValid,
+                inputError = inputIsNotValid,
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Rounded.Email,
@@ -85,7 +91,12 @@ fun SignInScreen(
             )
             CustomTextField(
                 textValue = password,
-                onNewValue = { password = it },
+                onNewValue = {
+                    password = it
+                    when {
+                        it.isNotEmpty() -> inputIsNotValid = InputError(false, "")
+                    }
+                },
                 borderColor = cyan,
                 labelText = "Password",
                 textColor = Color.White,
@@ -94,7 +105,7 @@ fun SignInScreen(
                 inputPassword = isVisible,
                 singleLine = true,
                 placeholder = "Password",
-                isError = inputIsNotValid,
+                inputError = inputIsNotValid,
                 trailingIcon = {
                     when (isVisible) {
                         true -> Icon(
@@ -115,38 +126,18 @@ fun SignInScreen(
                 },
                 leadingIcon = { Icon(imageVector = Icons.Rounded.Lock, contentDescription = null) }
             )
-            when (inputIsNotValid) {
-                true -> "Please check the data"
-                else -> null
-            }?.let { errorMessage ->
-                Text(
-                    text = errorMessage,
-                    style = TextStyle(
-                        color = Color.Red,
-                        fontSize = 14.sp,
-                        fontFamily = poppinsFamily,
-                        fontWeight = FontWeight.Normal,
-                        textAlign = TextAlign.Start
-                    ),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 8.dp)
-                )
-            }
             LargeSolidButton(
                 onClick = {
                     authViewModel.validateSignIn(email, password)
-                    val TAG = "VALIDATION"
                     when (authViewModel.signInValid.value) {
                         true -> {
                             navController.popBackStack()
                             navController.navigate(Screens.HomeScreen.route)
                         }
                         else -> {
-                            inputIsNotValid = true
+                            inputIsNotValid = InputError(true, "Please check the data")
                         }
                     }
-                    Log.i(TAG, "SignInScreen: $email, $password")
                 },
                 horizontalPaddingValues = 0,
                 verticalPaddingValues = 32,

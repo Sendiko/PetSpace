@@ -14,12 +14,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.sendiko.petspace.repository.UserOptions
+import com.sendiko.petspace.repository.model.InputError
 import com.sendiko.petspace.repository.viewmodel.AuthViewModel
 import com.sendiko.petspace.ui.component.CustomTextField
 import com.sendiko.petspace.ui.component.LargeSolidButton
@@ -42,7 +42,7 @@ fun SignUpScreen(
     var expanded by remember { mutableStateOf(false) }
     val userOptions = listOf(UserOptions.User.option, UserOptions.Shelter.option)
     var isVisible by remember { mutableStateOf(true) }
-    var inputIsNotValid by remember { mutableStateOf(false) }
+    var inputIsNotValid by remember { mutableStateOf(InputError(false, "")) }
 
     Scaffold(
         backgroundColor = darkBlue,
@@ -65,7 +65,7 @@ fun SignUpScreen(
                 onNewValue = {
                     username = it
                     when {
-                        it.isNotEmpty() -> inputIsNotValid = false
+                        it.isNotEmpty() -> inputIsNotValid = InputError(false, "")
                     }
                 },
                 borderColor = cyan,
@@ -75,7 +75,7 @@ fun SignUpScreen(
                 keyboardType = KeyboardType.Text,
                 inputPassword = false,
                 singleLine = true,
-                isError = inputIsNotValid,
+                inputError = inputIsNotValid,
                 placeholder = "Username",
                 trailingIcon = { },
                 leadingIcon = {
@@ -90,7 +90,7 @@ fun SignUpScreen(
                 onNewValue = {
                     email = it
                     when {
-                        it.isNotEmpty() -> inputIsNotValid = false
+                        it.isNotEmpty() -> inputIsNotValid = InputError(false, "")
                     }
                 },
                 borderColor = cyan,
@@ -100,7 +100,7 @@ fun SignUpScreen(
                 keyboardType = KeyboardType.Email,
                 inputPassword = false,
                 singleLine = true,
-                isError = inputIsNotValid,
+                inputError = inputIsNotValid,
                 placeholder = "Email",
                 trailingIcon = { },
                 leadingIcon = { Icon(imageVector = Icons.Rounded.Email, contentDescription = null) }
@@ -110,7 +110,7 @@ fun SignUpScreen(
                 onNewValue = {
                     password = it
                     when {
-                        it.isNotEmpty() -> inputIsNotValid = false
+                        it.isNotEmpty() -> inputIsNotValid = InputError(false, "")
                     }
                 },
                 borderColor = cyan,
@@ -120,7 +120,7 @@ fun SignUpScreen(
                 keyboardType = KeyboardType.Password,
                 inputPassword = isVisible,
                 singleLine = true,
-                isError = inputIsNotValid,
+                inputError = inputIsNotValid,
                 placeholder = "Password",
                 trailingIcon = {
                     when (isVisible) {
@@ -150,7 +150,7 @@ fun SignUpScreen(
                     onNewValue = {
                         user = it
                         when {
-                            it.isNotEmpty() -> inputIsNotValid = false
+                            it.isNotEmpty() -> inputIsNotValid = InputError(false, "")
                         }
                     },
                     borderColor = cyan,
@@ -160,7 +160,7 @@ fun SignUpScreen(
                     keyboardType = KeyboardType.Text,
                     inputPassword = false,
                     singleLine = true,
-                    isError = inputIsNotValid,
+                    inputError = inputIsNotValid,
                     trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
                     leadingIcon = {
                         when (user) {
@@ -188,30 +188,12 @@ fun SignUpScreen(
                         DropdownMenuItem(onClick = {
                             user = it
                             expanded = false
-                            inputIsNotValid = false
+                            inputIsNotValid = InputError(false, "")
                         }) {
                             Text(it)
                         }
                     }
                 }
-            }
-            when (inputIsNotValid) {
-                true -> "Please check the data"
-                else -> null
-            }?.let { it1 ->
-                Text(
-                    text = it1,
-                    style = TextStyle(
-                        color = Color.Red,
-                        fontSize = 14.sp,
-                        fontFamily = poppinsFamily,
-                        fontWeight = FontWeight.Normal,
-                        textAlign = TextAlign.Start
-                    ),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 8.dp)
-                )
             }
             LargeSolidButton(
                 onClick = {
@@ -226,7 +208,7 @@ fun SignUpScreen(
                             navController.popBackStack()
                             navController.navigate(Screens.SignInScreen.route)
                         }
-                        else -> inputIsNotValid = true
+                        else -> inputIsNotValid = InputError(true, "Please check the data")
                     }
                 },
                 horizontalPaddingValues = 0,
